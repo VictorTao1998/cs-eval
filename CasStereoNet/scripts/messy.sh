@@ -19,7 +19,7 @@ python -m torch.distributed.launch --nproc_per_node=1 /cephfs/jianyu/cs_eval_fv/
     --test_sim_datapath /cephfs/datasets/iccv_pnp/messy-table-dataset/real_v9/training \
     --sim_testlist /cephfs/datasets/iccv_pnp/messy-table-dataset/real_v9/training_lists/all.txt \
     --test_real_datapath /cephfs/datasets/iccv_pnp/real_data_v9/ \
-    --real_testlist /cephfs/datasets/iccv_pnp/real_data_v9/test_list.txt \
+    --real_testlist /cephfs/datasets/iccv_pnp/messy-table-dataset/real_v9/training_lists/all.txt \
     --depthpath /cephfs/datasets/iccv_pnp/messy-table-dataset/real_v9/training \
     --epochs 300 \
     --lrepochs "200:10" \
