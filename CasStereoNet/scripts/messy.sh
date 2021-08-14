@@ -9,7 +9,7 @@ if [ ! -d $save_path ];then
 fi
 
 
-python -m torch.distributed.launch --nproc_per_node=1 /cephfs/jianyu/cs_eval/CasStereoNet/main.py \
+python -m torch.distributed.launch --nproc_per_node=1 /cephfs/jianyu/cs_eval_fv/CasStereoNet/main.py \
     --dataset messy_table \
     --test_dataset messy_table \
     --datapath /cephfs/datasets/iccv_pnp/messy-table-dataset/v9/training \
@@ -33,11 +33,11 @@ python -m torch.distributed.launch --nproc_per_node=1 /cephfs/jianyu/cs_eval/Cas
     --using_ns \
     --ns_size 3 \
     --model gwcnet-c \
-    --logdir "/cephfs/jianyu/eval/cs_eval_dr"  \
+    --logdir "/cephfs/jianyu/eval/cs_eval_dr_fv"  \
     --ndisps "48,24" \
     --disp_inter_r "4,1"  \
     --batch_size 2 \
     --mode test \
     --summary_freq 500 \
     --test_summary_freq 50 \
-    --loadckpt "/cephfs/jianyu/eval/cs_train_dr/checkpoint_best.ckpt"
+    --loadckpt "/cephfs/jianyu/eval/cs_train_f_5/checkpoint_best.ckpt"
