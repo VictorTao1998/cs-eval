@@ -133,6 +133,7 @@ class feature_extraction(nn.Module):
     def forward(self, x):
         output_s1   = self.firstconv_a(x)
         output      = self.firstconv_b(output_s1)
+        raw_fea     = output
         output_s2   = self.layer1(output)
         output_raw  = self.layer2(output_s2)
         output      = self.layer3(output_raw)
@@ -177,7 +178,7 @@ class feature_extraction(nn.Module):
                 out = self.out2(intra_feat)
                 output_msfeat["stage2"] = out
 
-        return output_msfeat
+        return output_msfeat, raw_fea
 
 class CostAggregation(nn.Module):
     def __init__(self, in_channels, base_channels=32):
@@ -373,10 +374,10 @@ class PSMNet(nn.Module):
 
     def forward(self, left, right):
 
-        refimg_msfea = self.feature_extraction(left)
-        targetimg_msfea = self.feature_extraction(right)
+        refimg_msfea, fea = self.feature_extraction(left)
+        targetimg_msfea, _ = self.feature_extraction(right)
 
-        #print(refimg_msfea["stage2"].shape)
+        print(fea.shape)
 
         outputs = {}
         outputs["fea"] = refimg_msfea["stage2"]
