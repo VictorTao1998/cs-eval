@@ -377,10 +377,10 @@ class PSMNet(nn.Module):
         refimg_msfea, fea = self.feature_extraction(left)
         targetimg_msfea, _ = self.feature_extraction(right)
 
-        print(fea.shape)
+        #print(fea.shape)
 
         outputs = {}
-        outputs["fea"] = refimg_msfea["stage2"]
+        outputs["fea"] = fea
         pred, cur_disp = None, None
         for stage_idx in range(self.num_stage):
             # print("*********************stage{}*********************".format(stage_idx + 1))
